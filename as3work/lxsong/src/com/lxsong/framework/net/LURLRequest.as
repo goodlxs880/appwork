@@ -42,11 +42,6 @@ package com.lxsong.framework.net
 			if (!_socket)
 				_socket = new Socket();
 
-			_socket.addEventListener(Event.CONNECT, onHandler);
-			_socket.addEventListener(Event.CLOSE, onHandler);
-			_socket.addEventListener(IOErrorEvent.IO_ERROR, onHandler);
-			_socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onHandler);
-			_socket.addEventListener(ProgressEvent.SOCKET_DATA, onHandler);
 		}
 		
 		protected function onHandler(evt:Event):void
@@ -54,7 +49,8 @@ package com.lxsong.framework.net
 			switch (evt.type)
 			{
 				case Event.CONNECT:
-					_socket.writeBytes(_data);
+					if (_data)
+						_socket.writeBytes(_data);
 					_socket.flush();
 					break;
 				case ProgressEvent.SOCKET_DATA:
@@ -63,7 +59,7 @@ package com.lxsong.framework.net
 					(evt.target as Socket).readBytes(_resultData, 0, _socket.bytesAvailable);
 					(evt.target as Socket).close();
 					dispatchEvent(new Event(Event.COMPLETE));
-					close();
+					release();
 					break;
 				case Event.CLOSE:
 				case IOErrorEvent.IO_ERROR:
@@ -71,12 +67,24 @@ package com.lxsong.framework.net
 					close();
 					break;
 				default:
-					
+					close();
 					break;
 			}
 		}
 		
 		private function close():void
+		{
+			release();
+			dispatchEvent(new Event(Event.CLOSE));
+		}
+		
+		public function dispose():void
+		{
+			release();
+			_socket = null;
+		}
+		
+		public function release():void
 		{
 			if (_socket)
 			{
@@ -88,16 +96,21 @@ package com.lxsong.framework.net
 				_socket.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, onHandler);
 				_socket.removeEventListener(ProgressEvent.SOCKET_DATA, onHandler);
 			}
-			dispatchEvent(new Event(Event.CLOSE));
-		}
-		
-		public function dispose():void
-		{
 			
+			_data = null;
+			_resultData = null;
+			_host = "";
+			_port = 0;
 		}
 		
 		public function connectAndSend():void
 		{
+			_socket.addEventListener(Event.CONNECT, onHandler);
+			_socket.addEventListener(Event.CLOSE, onHandler);
+			_socket.addEventListener(IOErrorEvent.IO_ERROR, onHandler);
+			_socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onHandler);
+			_socket.addEventListener(ProgressEvent.SOCKET_DATA, onHandler);
+			
 			_socket.connect(_host, _port);
 		}
 		
@@ -109,6 +122,16 @@ package com.lxsong.framework.net
 		public function get resultData():ByteArray
 		{
 			return _resultData;
+		}
+		
+		public function set host(value:String):void
+		{
+			_host = value;
+		}
+		
+		public function set port(value:int):void
+		{
+			_port = value;
 		}
 	}
 }

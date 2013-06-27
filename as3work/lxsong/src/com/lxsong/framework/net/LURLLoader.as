@@ -10,9 +10,11 @@ package com.lxsong.framework.net
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
+	import flash.events.IOErrorEvent;
 	import flash.utils.ByteArray;
 	
 	[Event(name="complete", type="flash.events.Event")]
+	[Event(name="ioError", type="flash.events.IOErrorEvent")]
 	/**
 	 * 
 	 * @author lxsong
@@ -47,7 +49,7 @@ package com.lxsong.framework.net
 		
 		protected function onClose(evt:Event):void
 		{
-			
+			dispatchEvent(new IOErrorEvent(IOErrorEvent.IO_ERROR));
 		}
 		
 		public function get data():ByteArray
@@ -58,5 +60,14 @@ package com.lxsong.framework.net
 			return _data;
 		}
 		
+		public function release():void
+		{
+			
+		}
+		
+		public function getLUrlRequest():LURLRequest
+		{
+			return _lurlRequest;
+		}
 	}
 }
