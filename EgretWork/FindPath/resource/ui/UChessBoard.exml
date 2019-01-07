@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="UChessBoardSkin" minHeight="230" minWidth="450" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-    <e:Image left="0" right="0" bottom="0"  top="0" source="border_png" scale9Grid="2,2,12,12"  width="600" height="600"/>
-	<e:Button id="btnEnter" label="Button" x="223" y="189"/>
+	<e:Rect id="rectBg" width="600" height="600" x="0" y="0" fillColor="0xffffff"/>
 	<e:Label id="lblTitle" text="Label" x="116" y="104" textColor="0x000000" anchorOffsetX="0" width="380"/>
 
 	<w:Config id="168278d1399" ></w:Config>

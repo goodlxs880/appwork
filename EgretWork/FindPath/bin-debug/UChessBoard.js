@@ -12,6 +12,19 @@ var UChessBoard = (function (_super) {
     __extends(UChessBoard, _super);
     function UChessBoard() {
         var _this = _super.call(this) || this;
+        _this.skin.addEventListener(eui.UIEvent.COMPLETE, function () {
+            // this.rectBg.graphics.lineStyle(1, 0x000000);
+            // for (var i:number = 1; i < 30; i++)
+            // {
+            // 	this.rectBg.graphics.moveTo(i*20, 0);
+            // 	this.rectBg.graphics.lineTo(i*20, 600);
+            // }
+            // for (var j:number = 1; j < 30; j++)
+            // {
+            // 	this.rectBg.graphics.moveTo(0, j*20);
+            // 	this.rectBg.graphics.lineTo(600, j*20);
+            // }
+        }, _this);
         _this.skinName = "resource/ui/UChessBoard.exml";
         return _this;
     }
@@ -20,11 +33,10 @@ var UChessBoard = (function (_super) {
     };
     UChessBoard.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
-        this.lblTitle.text = "hello";
-        this.btnEnter.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+        this.$addListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
     };
     UChessBoard.prototype.onButtonClick = function (e) {
-        this.lblTitle.text = "hello world";
+        this.lblTitle.text = e.localX + "," + e.localY;
     };
     return UChessBoard;
 }(eui.Panel));
