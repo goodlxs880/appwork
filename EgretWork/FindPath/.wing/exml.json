@@ -1,0 +1,12 @@
+{
+    "16827451b0e": {
+        "path": "..\\resource\\MainUI.ts",
+        "class": "MainUI",
+        "parentPath": ""
+    },
+    "168278d1399": {
+        "path": "..\\resource\\ui\\UChessBoard.ts",
+        "class": "UChessBoard",
+        "parentPath": "resource/eui_skins/PanelSkin.exml"
+    }
+}
