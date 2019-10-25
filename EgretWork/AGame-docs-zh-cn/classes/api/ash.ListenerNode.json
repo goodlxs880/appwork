@@ -1,0 +1,46 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "Function",
+			"name": "listener",
+			"memberof": "ash.ListenerNode",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.ListenerNode",
+			"name": "next",
+			"memberof": "ash.ListenerNode",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "Boolean",
+			"name": "once",
+			"memberof": "ash.ListenerNode",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.ListenerNode",
+			"name": "previous",
+			"memberof": "ash.ListenerNode",
+			"scope": "instance",
+			"pType": "public"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ListenerNode",
+		"memberof": "ash",
+		"filename": "D:\\github\\appwork\\EgretWork\\AGame\\src\\ash\\signals\\ListenerNode.ts"
+	},
+	"pType": "public"
+}

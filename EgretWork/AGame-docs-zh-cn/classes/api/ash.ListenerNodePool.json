@@ -1,0 +1,60 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "cache",
+			"memberof": "ash.ListenerNodePool",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "node",
+					"type": "ash.ListenerNode",
+					"description": ""
+				}
+			],
+			"pType": "public"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "dispose",
+			"memberof": "ash.ListenerNodePool",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "node",
+					"type": "ash.ListenerNode",
+					"description": ""
+				}
+			],
+			"pType": "public"
+		},
+		{
+			"kind": "function",
+			"type": "ash.ListenerNode",
+			"name": "get",
+			"memberof": "ash.ListenerNodePool",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "releaseCache",
+			"memberof": "ash.ListenerNodePool",
+			"scope": "instance",
+			"pType": "public"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ListenerNodePool",
+		"memberof": "ash",
+		"filename": "D:\\github\\appwork\\EgretWork\\AGame\\src\\ash\\signals\\ListenerNodePool.ts"
+	},
+	"pType": "public"
+}

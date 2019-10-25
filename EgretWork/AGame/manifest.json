@@ -9,8 +9,29 @@
 		"libs/modules/promise/promise.js"
 	],
 	"game": [
-		"bin-debug/LoadingUI.js",
+		"bin-debug/ash/signals/SignalBase.js",
+		"bin-debug/ash/core/SystemList.js",
+		"bin-debug/Platform.js",
+		"bin-debug/ash/core/ComponentMatchingFamily.js",
+		"bin-debug/ash/core/Engine.js",
+		"bin-debug/ash/core/Entity.js",
+		"bin-debug/ash/core/EntityList.js",
+		"bin-debug/ash/core/IFamily.js",
+		"bin-debug/ash/core/Node.js",
+		"bin-debug/ash/core/NodeList.js",
+		"bin-debug/ash/core/NodePool.js",
+		"bin-debug/ash/core/System.js",
 		"bin-debug/Main.js",
-		"bin-debug/Platform.js"
+		"bin-debug/ash/signals/ListenerNode.js",
+		"bin-debug/ash/signals/ListenerNodePool.js",
+		"bin-debug/ash/signals/Signal0.js",
+		"bin-debug/ash/signals/Signal1.js",
+		"bin-debug/ash/signals/Signal2.js",
+		"bin-debug/ash/signals/Signal3.js",
+		"bin-debug/ash/signals/SignalAny.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/ash/tick/FixedTickProvider.js",
+		"bin-debug/ash/tick/FrameTickProvider.js",
+		"bin-debug/ash/tick/ITickProvider.js"
 	]
 }

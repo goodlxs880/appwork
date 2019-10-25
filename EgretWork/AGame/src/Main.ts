@@ -93,57 +93,110 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        let sky = this.createBitmapByName("bg_jpg");
-        this.addChild(sky);
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-        sky.width = stageW;
-        sky.height = stageH;
+        // let sky = this.createBitmapByName("bg_jpg");
+        // this.addChild(sky);
+        // let stageW = this.stage.stageWidth;
+        // let stageH = this.stage.stageHeight;
+        // sky.width = stageW;
+        // sky.height = stageH;
 
-        let topMask = new egret.Shape();
-        topMask.graphics.beginFill(0x000000, 0.5);
-        topMask.graphics.drawRect(0, 0, stageW, 172);
-        topMask.graphics.endFill();
-        topMask.y = 33;
-        this.addChild(topMask);
+        // let topMask = new egret.Shape();
+        // topMask.graphics.beginFill(0x000000, 0.5);
+        // topMask.graphics.drawRect(0, 0, stageW, 172);
+        // topMask.graphics.endFill();
+        // topMask.y = 33;
+        // this.addChild(topMask);
 
-        let icon = this.createBitmapByName("egret_icon_png");
-        this.addChild(icon);
-        icon.x = 26;
-        icon.y = 33;
+        // let icon = this.createBitmapByName("egret_icon_png");
+        // this.addChild(icon);
+        // icon.x = 26;
+        // icon.y = 33;
 
-        let line = new egret.Shape();
-        line.graphics.lineStyle(2, 0xffffff);
-        line.graphics.moveTo(0, 0);
-        line.graphics.lineTo(0, 117);
-        line.graphics.endFill();
-        line.x = 172;
-        line.y = 61;
-        this.addChild(line);
-
-
-        let colorLabel = new egret.TextField();
-        colorLabel.textColor = 0xffffff;
-        colorLabel.width = stageW - 172;
-        colorLabel.textAlign = "center";
-        colorLabel.text = "Hello Egret";
-        colorLabel.size = 24;
-        colorLabel.x = 172;
-        colorLabel.y = 80;
-        this.addChild(colorLabel);
-
-        let textfield = new egret.TextField();
-        this.addChild(textfield);
-        textfield.alpha = 0;
-        textfield.width = stageW - 172;
-        textfield.textAlign = egret.HorizontalAlign.CENTER;
-        textfield.size = 24;
-        textfield.textColor = 0xffffff;
-        textfield.x = 172;
-        textfield.y = 135;
-        this.textfield = textfield;
+        // let line = new egret.Shape();
+        // line.graphics.lineStyle(2, 0xffffff);
+        // line.graphics.moveTo(0, 0);
+        // line.graphics.lineTo(0, 117);
+        // line.graphics.endFill();
+        // line.x = 172;
+        // line.y = 61;
+        // this.addChild(line);
 
 
+        // let colorLabel = new egret.TextField();
+        // colorLabel.textColor = 0xffffff;
+        // colorLabel.width = stageW - 172;
+        // colorLabel.textAlign = "center";
+        // colorLabel.text = "Hello Egret";
+        // colorLabel.size = 24;
+        // colorLabel.x = 172;
+        // colorLabel.y = 80;
+        // this.addChild(colorLabel);
+
+        // let textfield = new egret.TextField();
+        // this.addChild(textfield);
+        // textfield.alpha = 0;
+        // textfield.width = stageW - 172;
+        // textfield.textAlign = egret.HorizontalAlign.CENTER;
+        // textfield.size = 24;
+        // textfield.textColor = 0xffffff;
+        // textfield.x = 172;
+        // textfield.y = 135;
+        // this.textfield = textfield;
+
+        
+
+        // var data:any = RES.getRes("girl_json");
+        // var txtr:any = RES.getRes("girl_png");
+        // var mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        // var girl:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "girl" ) );
+        // this.addChild(girl);
+        // girl.gotoAndPlay("attack", -1);
+
+        // var func1 = function() {
+
+        //     console.log("nihao ");
+        // };
+
+        // var func2 = function() {
+        //     console.log("func2");
+        // }
+
+        // var func3 = function():string {
+        //     console.log("func3");
+        //     return "func3 ret";
+        // }
+
+        // let map = new Map<Function, Function>();
+        // map["func1"] = func1;
+        // map["f2"] = func2;
+        // map["f3"] = func3;
+        // map["f2"]();
+        // delete map["f2"];
+        // if (map["f2"]) {
+        //     console.log("have f2");
+        // }
+        // else
+        // {
+        //     console.log("not have f2");
+        // }
+        
+        // for (let i in map)
+        // {
+        //     console.log(i);
+        //     console.log(map[i]());
+        // }
+
+        this.callfunc(1,2,3);
+    }
+
+    private callfunc(...arg:any[]){
+        this.call2.apply(null, arg);
+    }
+
+    private call2(arg1:any, arg2:any, arg3:any){
+        console.log(arg1);
+        console.log(arg2);
+        console.log(arg3);
     }
 
     /**
@@ -187,3 +240,5 @@ class Main extends egret.DisplayObjectContainer {
         change();
     }
 }
+
+window['Main'] = Main;

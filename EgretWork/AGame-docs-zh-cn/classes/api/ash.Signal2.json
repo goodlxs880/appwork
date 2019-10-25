@@ -1,0 +1,39 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "_numListeners",
+			"memberof": "ash.Signal2",
+			"scope": "instance",
+			"pType": "protected",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"type": "ash.ListenerNode",
+			"name": "head",
+			"memberof": "ash.Signal2",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.ListenerNode",
+			"name": "tail",
+			"memberof": "ash.Signal2",
+			"scope": "instance",
+			"pType": "public"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Signal2",
+		"memberof": "ash",
+		"filename": "D:\\github\\appwork\\EgretWork\\AGame\\src\\ash\\signals\\Signal2.ts"
+	},
+	"pType": "public"
+}

@@ -1,0 +1,91 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "String",
+			"name": "_name",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"description": "Optional, give the entity a name. This can help with debugging and with serialising the entity.",
+			"pType": "protected"
+		},
+		{
+			"kind": "member",
+			"type": "ash.Signal2",
+			"name": "componentAdded",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"description": "This signal is dispatched when a component is added to the entity.",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.Signal2",
+			"name": "componentRemoved",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"description": "This signal is dispatched when a component is removed from the entity.",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "Object",
+			"name": "components",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.Signal2",
+			"name": "nameChanged",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"description": "Dispatched when the name of the entity changes. Used internally by the engine to track entities based on their names.",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.Entity",
+			"name": "next",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"pType": "public"
+		},
+		{
+			"kind": "member",
+			"type": "ash.Entity",
+			"name": "previous",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"pType": "public"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Entity",
+			"memberof": "ash.Entity",
+			"scope": "instance",
+			"description": "The constructor",
+			"params": [
+				{
+					"name": "name",
+					"type": "String",
+					"default": "\"\"",
+					"description": "The name for the entity. If left blank, a default name is assigned with the form _entityN where N is an integer."
+				}
+			],
+			"pType": "public"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Entity",
+		"memberof": "ash",
+		"filename": "D:\\github\\appwork\\EgretWork\\AGame\\src\\ash\\core\\Entity.ts"
+	},
+	"pType": "public"
+}
