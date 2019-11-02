@@ -7,7 +7,7 @@ namespace ash {
         private dispatching:boolean;
 
 
-        public constructor()
+       constructor()
         {
             this.nodes = new Array<ListenerNode>();
 			this.nodesCache = new  Array<ListenerNode>();
@@ -17,7 +17,11 @@ namespace ash {
 		{
 			for (let node of this.nodes)
 			{
-				node.listener.apply(null, args);
+				node.listener.apply(args);
+				if( node.once )
+				{
+					this.remove( node.listener );
+				}
 			}
 		}
 
@@ -27,7 +31,7 @@ namespace ash {
 			return this.nodes.length;
 		}
 
-		private isContain( listener : Function ) : boolean
+		private isContain( listener : ash.FuncHandler ) : boolean
 		{
 			for (let node of this.nodes)
 			{
@@ -36,7 +40,7 @@ namespace ash {
 			return false;
 		}
 
-		public add( listener : Function ) : void
+		public add( listener : ash.FuncHandler ) : void
 		{
 			if (this.isContain(listener)) return;
 			let node:ListenerNode = this.createNode();
@@ -44,7 +48,7 @@ namespace ash {
 			this.addNode(node);
 		}
 		
-		public addOnce( listener : Function ) : void
+		public addOnce( listener : ash.FuncHandler ) : void
 		{
 			if (this.isContain(listener)) return;
 			let node:ListenerNode = this.createNode();
@@ -58,29 +62,54 @@ namespace ash {
 			this.nodes.push(node);
 		}
 
-		public remove( listener : Function ) : void
+		public remove( listener : ash.FuncHandler ) : void
 		{
-			
+			if ( !listener ) return;
+
+			let num:number = this.nodes.length;
+			for ( let i:number = num - 1; 0; i-- )
+			{
+				if ( this.nodes[i].listener == listener )
+				{
+					this.disposeNode( this.nodes[i] );
+					this.nodes.splice( i, 1 );
+				}
+			}
 		}
 		
 		public removeAll() : void
 		{
-			
+			for (let node of this.nodes)
+			{
+				this.disposeNode(node);
+			}
+			this.nodes.splice(0);
 		}
 
 		private createNode() : ListenerNode
 		{
-			return null;
+			if (this.nodesCache.length > 0)
+			{
+				return this.nodesCache.splice(this.nodesCache.length - 1)[0];
+			}
+			else
+			{
+				return new ListenerNode();
+			}
 		}
 
 		private disposeNode( node : ListenerNode ) : void
 		{
+			if (!node) return;
 
+			node.listener = null;
+			node.once = false;
+			this.nodesCache.push(node);
 		}
 
 		public releaseCache() : void
 		{
-
+			this.nodesCache.splice(0);
 		}
     }
 

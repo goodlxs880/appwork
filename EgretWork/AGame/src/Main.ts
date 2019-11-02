@@ -71,6 +71,12 @@ class Main extends egret.DisplayObjectContainer {
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
 
+        this.initGameWorld();
+    }
+
+    private initGameWorld() {
+        let asteroids = new Asteroids(this, this.stage.stageWidth, this.stage.stageHeight);
+        asteroids.start();
     }
 
     private async loadResource() {
@@ -186,7 +192,30 @@ class Main extends egret.DisplayObjectContainer {
         //     console.log(map[i]());
         // }
 
-        this.callfunc(1,2,3);
+        // this.callfunc(1,2,3);
+
+        // let cls  = ActionMove
+        // console.log(cls.name);
+        // let ac = new ActionMove();
+        // console.log(ac.name);
+        // if (ac.constructor == ActionMove)
+        // {
+        //     console.log("same");
+        // }
+
+        // let ac1 = new ActionMove();
+        // ac1.name = "ac1";
+        // let ac2 = new ActionMove();
+        // ac2.name = "ac2";
+
+        // this.callf(new ash.FuncHandler(ac1.printInfo, ac1));
+        // this.callf(new ash.FuncHandler(ac2.printInfo, ac2, "hello"));
+    }
+
+    private callf(func:ash.FuncHandler)
+    {
+        let ret:any = func.apply();
+        console.log("result = " + ret);
     }
 
     private callfunc(...arg:any[]){
@@ -215,29 +244,29 @@ class Main extends egret.DisplayObjectContainer {
      * Description file loading is successful, start to play the animation
      */
     private startAnimation(result: string[]) {
-        let parser = new egret.HtmlTextParser();
+        // let parser = new egret.HtmlTextParser();
 
-        let textflowArr = result.map(text => parser.parse(text));
-        let textfield = this.textfield;
-        let count = -1;
-        let change = () => {
-            count++;
-            if (count >= textflowArr.length) {
-                count = 0;
-            }
-            let textFlow = textflowArr[count];
+        // let textflowArr = result.map(text => parser.parse(text));
+        // let textfield = this.textfield;
+        // let count = -1;
+        // let change = () => {
+        //     count++;
+        //     if (count >= textflowArr.length) {
+        //         count = 0;
+        //     }
+        //     let textFlow = textflowArr[count];
 
-            // 切换描述内容
-            // Switch to described content
-            textfield.textFlow = textFlow;
-            let tw = egret.Tween.get(textfield);
-            tw.to({ "alpha": 1 }, 200);
-            tw.wait(2000);
-            tw.to({ "alpha": 0 }, 200);
-            tw.call(change, this);
-        };
+        //     // 切换描述内容
+        //     // Switch to described content
+        //     textfield.textFlow = textFlow;
+        //     let tw = egret.Tween.get(textfield);
+        //     tw.to({ "alpha": 1 }, 200);
+        //     tw.wait(2000);
+        //     tw.to({ "alpha": 0 }, 200);
+        //     tw.call(change, this);
+        // };
 
-        change();
+        // change();
     }
 }
 
