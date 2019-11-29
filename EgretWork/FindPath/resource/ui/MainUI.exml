@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MainUISkin" width="600" height="600" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
-	<w:Config id="16827451b0e" ></w:Config>
-	<e:Button label="Button" x="25" y="36"/>
-</e:Skin>
