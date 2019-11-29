@@ -68,7 +68,7 @@ namespace ash {
 
             this.families.forEach( function( family ) {
                 family.newEntity( entity );
-            }) 
+            })
 		}
 		
 		/**

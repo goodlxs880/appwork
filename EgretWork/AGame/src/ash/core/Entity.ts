@@ -9,6 +9,9 @@ namespace ash {
 		 * Optional, give the entity a name. This can help with debugging and with serialising the entity.
 		 */
 		private _name : string;
+
+		private _uid : string;
+
 		/**
 		 * This signal is dispatched when a component is added to the entity.
 		 */
@@ -37,7 +40,8 @@ namespace ash {
 			this.componentAdded = new Signal();
 			this.componentRemoved = new Signal();
 			this.nameChanged = new Signal();
-			this.components = new Map<string, any>();
+			this.components = new Map<string, IComponent>();
+			this._uid = UUID.randomUUID();
 			if( name )
 			{
 				this._name = name;
@@ -79,9 +83,9 @@ namespace ash {
 		 * 
 		 * <code>entity : Entity = new Entity()
 		 *     .add( new Position( 100, 200 )
-		 *     .add( new Display( new PlayerClip() );</code>
+		 *     .add( new CDisplay( new PlayerClip() );</code>
 		 */
-		public add( component : any, componentClass : any = null ) : Entity
+		public add( component : IComponent, componentClass : any = null ) : Entity
 		{
 			if ( !componentClass )
 			{
@@ -134,7 +138,7 @@ namespace ash {
 		 * 
 		 * @return An array containing all the components that are on the entity.
 		 */
-		public getAll() : any
+		public getAll() : IComponent[]
 		{
 			return [...this.components];
 		}

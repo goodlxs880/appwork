@@ -212,21 +212,21 @@ class Main extends egret.DisplayObjectContainer {
         // this.callf(new ash.FuncHandler(ac2.printInfo, ac2, "hello"));
     }
 
-    private callf(func:ash.FuncHandler)
-    {
-        let ret:any = func.apply();
-        console.log("result = " + ret);
-    }
+    // private callf(func:ash.FuncHandler)
+    // {
+    //     let ret:any = func.apply();
+    //     console.log("result = " + ret);
+    // }
 
-    private callfunc(...arg:any[]){
-        this.call2.apply(null, arg);
-    }
+    // private callfunc(...arg:any[]){
+    //     this.call2.apply(null, arg);
+    // }
 
-    private call2(arg1:any, arg2:any, arg3:any){
-        console.log(arg1);
-        console.log(arg2);
-        console.log(arg3);
-    }
+    // private call2(arg1:any, arg2:any, arg3:any){
+    //     console.log(arg1);
+    //     console.log(arg2);
+    //     console.log(arg3);
+    // }
 
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

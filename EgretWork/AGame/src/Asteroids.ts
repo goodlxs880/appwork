@@ -23,20 +23,18 @@ class Asteroids
 		config.width = width;
 		config.height = height;
 
-		
-
-		engine.addSystem( new WaitForStartSystem( creator ), SystemPriorities.preUpdate );
-		engine.addSystem( new GameManager( creator, config ), SystemPriorities.preUpdate );
-		engine.addSystem( new MotionControlSystem( keyPoll ), SystemPriorities.update );
-		engine.addSystem( new GunControlSystem( keyPoll, creator ), SystemPriorities.update );
-		engine.addSystem( new BulletAgeSystem( creator ), SystemPriorities.update );
-		engine.addSystem( new DeathThroesSystem( creator ), SystemPriorities.update );
-		engine.addSystem( new MovementSystem( config ), SystemPriorities.move );
-		engine.addSystem( new CollisionSystem( creator ), SystemPriorities.resolveCollisions );
-		engine.addSystem( new AnimationSystem(), SystemPriorities.animate );
-		engine.addSystem( new HudSystem(), SystemPriorities.animate );
-		engine.addSystem( new RenderSystem( this.container ), SystemPriorities.render );
-		// engine.addSystem( new AudioSystem(), SystemPriorities.render );
+		engine.addSystem( new SWaitForStart( creator ), 		SystemPriorities.preUpdate );
+		engine.addSystem( new SGameManager( creator, config ), 	SystemPriorities.preUpdate );
+		engine.addSystem( new SMotionControl( keyPoll ), 		SystemPriorities.update );
+		engine.addSystem( new SGunControl( keyPoll, creator ), 	SystemPriorities.update );
+		engine.addSystem( new SBulletAge( creator ), 			SystemPriorities.update );
+		engine.addSystem( new SDeathThroes( creator ), 			SystemPriorities.update );
+		engine.addSystem( new SMovement( config ), 				SystemPriorities.move );
+		engine.addSystem( new SCollision( creator ), 			SystemPriorities.resolveCollisions );
+		engine.addSystem( new SAnimation(), 					SystemPriorities.animate );
+		engine.addSystem( new SHud(), 							SystemPriorities.animate );
+		engine.addSystem( new SRender( this.container ), 		SystemPriorities.render );
+		engine.addSystem( new SAudio(), 						SystemPriorities.render );
 		
 		creator.createWaitForClick();
 		creator.createGame();

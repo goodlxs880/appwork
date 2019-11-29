@@ -1,4 +1,4 @@
-class CPosition
+class CPosition implements ash.IComponent
 {
 	public position : egret.Point;
 	public rotation : number = 0;
