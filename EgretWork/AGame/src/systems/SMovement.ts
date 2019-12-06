@@ -32,8 +32,6 @@ class SMovement extends ash.System
 		let position : CPosition = node.position;
 		let motion : CMotion = node.motion;
 
-		position = node.position;
-		motion = node.motion;
 		position.position.x += motion.velocity.x * time;
 		position.position.y += motion.velocity.y * time;
 		if ( position.position.x < 0 )

@@ -1,15 +1,22 @@
-class SpaceshipView extends egret.Shape
+class SpaceshipView extends egret.Sprite
 {
 	constructor()
 	{
         super();
-		this.graphics.beginFill( 0xFFFFFF );
-		this.graphics.moveTo( 10, 0 );
-		this.graphics.lineTo( -7, 7 );
-		this.graphics.lineTo( -4, 0 );
-		this.graphics.lineTo( -7, -7 );
-		this.graphics.lineTo( 10, 0 );
-		this.graphics.endFill();
+		// this.graphics.beginFill( 0xFFFFFF );
+		// this.graphics.moveTo( 20, 0 );
+		// this.graphics.lineTo( -14, 14 );
+		// this.graphics.lineTo( -8, 0 );
+		// this.graphics.lineTo( -14, -14 );
+		// this.graphics.lineTo( 20, 0 );
+		// this.graphics.endFill();
+
+		let content:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+		let img:egret.Bitmap = new egret.Bitmap();
+		img.texture = RES.getRes("hero_png");
+		img.x = -img.texture.textureWidth*0.5;
+		img.y = -img.texture.textureHeight*0.5;
+		this.addChild(img);
 	}
 	
 }

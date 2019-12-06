@@ -36,7 +36,7 @@ class Dot
 	{
 		this.image = new egret.Shape();
 		this.image.graphics.beginFill( 0xFFFFFF );
-		this.image.graphics.drawCircle( 0, 0, 1 );
+		this.image.graphics.drawCircle( 0, 0, 4 );
 		this.image.graphics.endFill();
 		let angle : number = Math.random() * 2 * Math.PI;
 		let distance : number = Math.random() * maxDistance;

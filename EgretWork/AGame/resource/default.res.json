@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,bgm_mp3,bullet_mp3,boom_mp3",
+			"keys": "bg_jpg,description_json,bgm_mp3,bullet_mp3,boom_mp3,bullet_png,enemy_png,hero_png,boom_effect_json,boom_effect_png",
 			"name": "preload"
 		}
 	],
@@ -35,6 +35,36 @@
 			"url": "assets/bullet.mp3",
 			"type": "sound",
 			"name": "bullet_mp3"
+		},
+		{
+			"url": "assets/bullet.png",
+			"type": "image",
+			"name": "bullet_png"
+		},
+		{
+			"url": "assets/Common.png",
+			"type": "image",
+			"name": "Common_png"
+		},
+		{
+			"url": "assets/enemy.png",
+			"type": "image",
+			"name": "enemy_png"
+		},
+		{
+			"url": "assets/hero.png",
+			"type": "image",
+			"name": "hero_png"
+		},
+		{
+			"url": "assets/boom_effect.json",
+			"type": "json",
+			"name": "boom_effect_json"
+		},
+		{
+			"url": "assets/boom_effect.png",
+			"type": "image",
+			"name": "boom_effect_png"
 		}
 	]
 }

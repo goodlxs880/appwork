@@ -1,6 +1,6 @@
 namespace ash {
 
-    export class ComponentMatchingFamily //implements IFamily
+    export class ComponentMatchingFamily implements IFamily
 	{
 		private nodes : NodeList;
 		private entities : Map<string, Node>;

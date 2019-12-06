@@ -15,29 +15,32 @@ class SMotionControl extends ash.System
 		let position : CPosition = node.position;
 		let motion : CMotion = node.motion;
 
-		if ( this.keyPoll.isDown( control.left ) )
+		if ( this.keyPoll.isDown( control.left ) && this.keyPoll.isUp( control.right ) )
 		{
-			position.rotation -= control.rotationRate * time;
-		}
-
-		if ( this.keyPoll.isDown( control.right ) )
+			motion.velocity.x = -300;
+		} 
+		else if ( this.keyPoll.isUp( control.left ) && this.keyPoll.isDown( control.right ) )
 		{
-			position.rotation += control.rotationRate * time;
+			motion.velocity.x = 300;
 		}
-
-		if ( this.keyPoll.isDown( control.accelerate ) )
-		{
-			// motion.velocity.x += Math.cos( position.rotation ) * control.accelerationRate * time;
-			// motion.velocity.y += Math.sin( position.rotation ) * control.accelerationRate * time;
-			motion.velocity.x = Math.cos( position.rotation ) * 100;
-			motion.velocity.y = Math.sin( position.rotation ) * 100;
-		}
-
-		if ( this.keyPoll.isUp( control.accelerate ) )
+		else
 		{
 			motion.velocity.x = 0;
+		}
+
+		if ( this.keyPoll.isDown( control.up ) && this.keyPoll.isUp( control.down ) )
+		{
+			motion.velocity.y = -300;
+		} 
+		else if ( this.keyPoll.isUp( control.up ) && this.keyPoll.isDown( control.down ) )
+		{
+			motion.velocity.y = 300;
+		}
+		else
+		{
 			motion.velocity.y = 0;
 		}
+
 	}
 
     public addToEngine( engine : ash.Engine ) : void

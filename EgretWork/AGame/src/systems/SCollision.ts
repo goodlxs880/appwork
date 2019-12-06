@@ -34,14 +34,13 @@ class SCollision extends ash.System
 				if ( egret.Point.distance( asteroid.position.position, bullet.position.position ) <= asteroid.collision.radius )
 				{
 					this.creator.destroyEntity( bullet.entity );
-					if ( asteroid.collision.radius > 10 )
+					if ( asteroid.collision.radius > 30 )
 					{
 						this.creator.createAsteroid( asteroid.collision.radius - 10, asteroid.position.position.x + Math.random() * 10 - 5, asteroid.position.position.y + Math.random() * 10 - 5 );
 						this.creator.createAsteroid( asteroid.collision.radius - 10, asteroid.position.position.x + Math.random() * 10 - 5, asteroid.position.position.y + Math.random() * 10 - 5 );
 					}
 					asteroid.asteroid.fsm.changeState( "destroyed" );
 					
-					// asteroid.audio.play( ExplodeAsteroid );
 					let sound : CSound = asteroid.audio.sounds.get("boom_mp3");
 					if ( sound )
 					{

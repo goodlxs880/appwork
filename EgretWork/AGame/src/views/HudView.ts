@@ -22,18 +22,19 @@ class HudView extends egret.Sprite
 	
 	public setScore( value : number ) : void
 	{
-		this.score.text = "SCORE: " + value;
+		this.score.text = "积分: " + value;
 	}
 	
 	public setLives( value : number ) : void
 	{
-		this.lives.text = "LIVES: " + value;
+		this.lives.text = "HP: " + value;
 	}
 	
 	private createTextField() : egret.TextField
 	{
 		let tf : egret.TextField = new egret.TextField();
-		tf.width = 120;
+		tf.width = 220;
+		tf.size = 50;
 		return tf;
 	}
 }

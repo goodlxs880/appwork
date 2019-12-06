@@ -1,16 +1,30 @@
 class EntityCreator
 {
     private engine : ash.Engine;
+    private config : GameConfig;
     private waitEntity : ash.Entity;
 
-    constructor( engine : ash.Engine )
+    constructor( engine : ash.Engine, config : GameConfig )
     {
         this.engine = engine;
+        this.config = config;
     }
 
     public destroyEntity( entity : ash.Entity ) : void
     {
         this.engine.removeEntity( entity );
+    }
+
+    public createBackGound(offsetY : number) : ash.Entity
+    {
+        let bgEntity : ash.Entity = new ash.Entity()
+            .add( new CDisplay( new BackGoundView(this.config) ) )
+            .add( new CPosition( this.config.width*0.5, offsetY, 0 ) )
+            .add( new CBackGround( 50 ) )
+            ;
+        
+        this.engine.addEntity( bgEntity );
+        return bgEntity;
     }
 
     public createGame() : ash.Entity
@@ -34,7 +48,7 @@ class EntityCreator
     {
         if( !this.waitEntity )
         {
-            let waitView : WaitForStartView = new WaitForStartView();
+            let waitView : WaitForStartView = new WaitForStartView( this.config );
             
             let waitEntity : ash.Entity = new ash.Entity( "wait" )
                 .add( new CWaitForStart( waitView ) )
@@ -54,7 +68,7 @@ class EntityCreator
         let fsm : ash.EntityStateMachine = new ash.EntityStateMachine( asteroid );
         
         fsm.createState( "alive" )
-            .add( CMotion ).withInstance( new CMotion( ( Math.random() - 0.5 ) * 4 * ( 50 - radius ), ( Math.random() - 0.5 ) * 4 * ( 50 - radius ), Math.random() * 2 - 1, 0 ) )
+            .add( CMotion ).withInstance( new CMotion( ( Math.random() - 0.5 ) * 20 * ( 80 - radius ), ( Math.random() - 0.5 ) * 20 * ( 80 - radius ), Math.random() * 2 - 1, 0 ) )
             .add( CCollision ).withInstance( new CCollision( radius ) )
             .add( CDisplay ).withInstance( new CDisplay( new AsteroidView( radius ) ) )
             ;
@@ -86,24 +100,25 @@ class EntityCreator
         
         fsm.createState( "playing" )
             .add( CMotion ).withInstance( new CMotion( 0, 0, 0, 15 ) )
-            .add( CMotionControls ).withInstance( new CMotionControls( 65, 68, 87, 100, 3 ) )
+            .add( CMotionControls ).withInstance( new CMotionControls( 65, 68, 87, 83, 100, 3 ) )
             .add( CGun ).withInstance( new CGun( 8, 0, 0.3, 4 ) )
             .add( CGunControls ).withInstance( new CGunControls( 32 ) )
             .add( CCollision ).withInstance( new CCollision( 9 ) )
             .add( CDisplay ).withInstance( new CDisplay( new SpaceshipView() ) );
         
-        let deathView : SpaceshipDeathView = new SpaceshipDeathView();
+        let deathView : SpaceshipBoomView = new SpaceshipBoomView();
         fsm.createState( "destroyed" )
-            .add( CDeathThroes ).withInstance( new CDeathThroes( 5 ) ) 
+            .add( CDeathThroes ).withInstance( new CDeathThroes( 3 ) ) 
             .add( CDisplay ).withInstance( new CDisplay( deathView ) )
             .add( CAnimation ).withInstance( new CAnimation( deathView ) );
         
         let sounds : Array<CSound> = new Array<CSound>();
         sounds.push( new CSound( "bullet_mp3", 1 ) );
+        sounds.push( new CSound( "boom_mp3", 1 ) );
 
         spaceship
             .add( new CSpaceship( fsm ) )
-            .add( new CPosition( 300, 225, 0 ) )
+            .add( new CPosition( this.config.width * 0.5, this.config.height - 200, -Math.PI*0.5 ) )
             .add( new CAudio( sounds ) )
             ;
             
@@ -121,9 +136,10 @@ class EntityCreator
             .add( new CPosition(
                 cos * gun.offsetFromParent.x - sin * gun.offsetFromParent.y + parentPosition.position.x,
                 sin * gun.offsetFromParent.x + cos * gun.offsetFromParent.y + parentPosition.position.y, 0 ) )
-            .add( new CCollision( 0 ) )
-            .add( new CMotion( cos * 150, sin * 150, 0, 0 ) )
-            .add( new CDisplay( new BulletView() ) );
+            .add( new CCollision( 10 ) )
+            .add( new CMotion( cos * 1500, sin * 1500, 0, 0 ) )
+            .add( new CDisplay( new BulletView( parentPosition.rotation ) ) )
+            ;
         this.engine.addEntity( bullet );
         return bullet;
     }

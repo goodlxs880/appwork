@@ -59,7 +59,7 @@ class SGameManager extends ash.System
 				// next level
 				let spaceship : NSpaceship = this.spaceships.head;
 				node.state.level++;
-				let asteroidCount : number = 30 + node.state.level;
+				let asteroidCount : number = 3 + node.state.level;
 				for( let i:number = 0; i < asteroidCount; ++i )
 				{
 					// check not on top of spaceship
@@ -68,7 +68,7 @@ class SGameManager extends ash.System
 						var position : egret.Point = new egret.Point( Math.random() * this.config.width, Math.random() * this.config.height );
 					}
 					while ( egret.Point.distance( position, spaceship.position.position ) <= 80 );
-					this.creator.createAsteroid( 30, position.x, position.y );
+					this.creator.createAsteroid( 60, position.x, position.y );
 				}
 			}
 		}

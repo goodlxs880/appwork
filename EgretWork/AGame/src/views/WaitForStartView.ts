@@ -2,12 +2,15 @@ class WaitForStartView extends egret.Sprite
 {
 	private gameOver : egret.TextField;
 	private clickToStart : egret.TextField;
+	private config : GameConfig;
 	
 	public click : ash.Signal = new ash.Signal();
 	
-	constructor()
+	constructor( config : GameConfig )
 	{
         super();
+
+		this.config = config;
 		this.gameOver = this.createGameOver();
 		this.addChild( this.gameOver );
 		this.clickToStart = this.createClickToStart();
@@ -21,10 +24,12 @@ class WaitForStartView extends egret.Sprite
 	{
 
 		let tf : egret.TextField = new egret.TextField();
-		tf.width = 200;
-		tf.text = "ASTEROIDS";
-		tf.x = 200;
-		tf.y = 175;
+		tf.width = 400;
+		tf.height = 200;
+		tf.text = "飞机大战";
+		tf.x = this.config.width * 0.5 - 200;
+		tf.y = this.config.height * 0.5 - 200;
+		tf.size = 100;
 		return tf;
 	}
 	
@@ -41,16 +46,18 @@ class WaitForStartView extends egret.Sprite
 	public removeClickListener( event : Event ) : void
 	{
 		this.stage.removeEventListener( egret.TouchEvent.TOUCH_END, this.dispatchClick, this );
-		this.gameOver.text = "GAME OVER";
+		this.gameOver.text = "游戏结束";
 	}
 	
 	private createClickToStart() : egret.TextField
 	{
 		let tf : egret.TextField = new egret.TextField();
-		tf.width = 200;
-		tf.text = "CLICK TO START";
-		tf.x = 200;
-		tf.y = 225;
+		tf.width = 400;
+		tf.height = 200;
+		tf.text = "点击开始";
+		tf.x = this.config.width * 0.5 - 200;
+		tf.y = this.config.height * 0.5 - 100;
+		tf.size = 100;
 		return tf;
 	}
 }

@@ -12,24 +12,24 @@ class SpaceshipDeathView extends egret.Sprite implements Animatable
         super();
 		this.shape1 = new egret.Shape();
 		this.shape1.graphics.beginFill( 0xFFFFFF );
-		this.shape1.graphics.moveTo( 10, 0 );
-		this.shape1.graphics.lineTo( -7, 7 );
-		this.shape1.graphics.lineTo( -4, 0 );
-		this.shape1.graphics.lineTo( 10, 0 );
+		this.shape1.graphics.moveTo( 20, 0 );
+		this.shape1.graphics.lineTo( -14, 14 );
+		this.shape1.graphics.lineTo( -8, 0 );
+		this.shape1.graphics.lineTo( 20, 0 );
 		this.shape1.graphics.endFill();
 		this.addChild( this.shape1 );
 		
 		this.shape2 = new egret.Shape();
 		this.shape2.graphics.beginFill( 0xFFFFFF );
-		this.shape2.graphics.moveTo( 10, 0 );
-		this.shape2.graphics.lineTo( -7, -7 );
-		this.shape2.graphics.lineTo( -4, 0 );
-		this.shape2.graphics.lineTo( 10, 0 );
+		this.shape2.graphics.moveTo( 20, 0 );
+		this.shape2.graphics.lineTo( -14, -14 );
+		this.shape2.graphics.lineTo( -8, 0 );
+		this.shape2.graphics.lineTo( 20, 0 );
 		this.shape2.graphics.endFill();
 		this.addChild( this.shape2 );
 		
-		this.vel1 = new egret.Point( Math.random() * 10 - 5, Math.random() * 10 + 10 );
-		this.vel2 = new egret.Point( Math.random() * 10 - 5, - ( Math.random() * 10 + 10 ) );
+		this.vel1 = new egret.Point( Math.random() * 20 - 10, Math.random() * 20 + 20 );
+		this.vel2 = new egret.Point( Math.random() * 20 - 10, - ( Math.random() * 20 + 20 ) );
 		
 		this.rot1 = Math.random() * 300 - 150;
 		this.rot2 = Math.random() * 300 - 150;
