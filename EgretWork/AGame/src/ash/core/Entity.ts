@@ -51,6 +51,11 @@ namespace ash {
 				this._name = "_entity" + (++Entity.nameCount);
 			}
 		}
+
+		public get UID () : string
+		{
+			return this._uid;
+		}
 		
 		/**
 		 * All entities have a name. If no name is set, a default name is used. Names are used to

@@ -42,7 +42,7 @@ class SGunControl extends ash.System
 		{
 			this.creator.createUserBullet( gun, position );
 			let sound : CSound = node.audio.sounds.get("bullet_mp3");
-			if ( sound )
+				if ( sound )
 			{
 				sound.triggerPlay = true;
 			}
